@@ -1,0 +1,24 @@
+﻿@model IEnumerable<ParcialUnoP_IV.Models.Clientes>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div style="margin-top:100px" class="text-center">
+    <h1 class="display-4">Bienvenido a tu sistema de ventas</h1>
+    <p>¡Con nuestro sistema vas a poder registrar tus ventas, clientes y productos de manera sencilla!</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr; column-gap:10px; margin-top:100px;">
+        <div style="background-color:darkslateblue; color:white; padding:10px;" >
+            <p style="font-weight:bold;font-size:25px;">Total deudas de clientes: $@ViewBag.TotalDeudas</p>
+            <a style="font-weight:800;font-size:25px;color:white;background-color:blueviolet; width:40%; margin:0 auto; " class="nav-link " asp-area="" asp-controller="Clientes" asp-action="Index">Ir a clientes</a>
+        </div>
+
+        <div style="background-color:darkslateblue; color:white; padding:10px;">
+            <p style="font-weight:bold;font-size:25px;">Total de ventas: $@ViewBag.TotalVentas</p>
+            <a style="font-weight:800;font-size:25px;color:white;background-color:blueviolet; width:40%; margin:0 auto; " class="nav-link " asp-area="" asp-controller="Ventas" asp-action="Index">Ir a ventas</a>
+        </div>
+
+
+    </div>
+</div>

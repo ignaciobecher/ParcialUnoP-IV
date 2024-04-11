@@ -1,0 +1,30 @@
+﻿@model ParcialUnoP_IV.Models.Ventas
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalles</h1>
+
+<div>
+    <h4>Ventas</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Total
+        </dt>
+        <dd class = "col-sm-10">
+            $@Html.DisplayFor(model => model.total)
+        </dd>
+        <dt class = "col-sm-2">
+            Fecha 
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FechaCreacion)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.id">Editar</a> |
+    <a asp-action="Index">Volver a ventas</a>
+</div>

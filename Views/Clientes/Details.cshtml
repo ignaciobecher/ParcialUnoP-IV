@@ -1,0 +1,30 @@
+﻿@model ParcialUnoP_IV.Models.Clientes
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalles</h1>
+
+<div>
+    <h4>Clientes</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Nombre
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.name)
+        </dd>
+        <dt class = "col-sm-2">
+           Deuda
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.debt)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.id">Editar</a> |
+    <a asp-action="Index">Volver a clientes</a>
+</div>
