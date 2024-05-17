@@ -1,0 +1,19 @@
+﻿@model ParcialUnoP_IV.Models.LoginViewModel
+
+<h2>Iniciar sesión</h2>
+
+<form asp-action="Login" method="post">
+    <div class="form-group">
+        <label asp-for="Username">Usuario:</label>
+        <input placeholder="Ingrese su usuario..." asp-for="Username" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Password">Contraseña:</label>
+        <input placeholder="Ingrese su contraseña..." asp-for="Password" type="password" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Ingresar</button>
+
+</form>
+
+<a style="margin-left:10px" asp-action="Register">Registrarse</a>
+

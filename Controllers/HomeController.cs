@@ -3,9 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using ParcialUnoP_IV.Models;
 using System.Linq;
 using ParcialUnoP_IV.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ParcialUnoP_IV.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ParcialUnoP_IVContext _context;

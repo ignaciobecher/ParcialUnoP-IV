@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ParcialUnoP_IV.Data;
 
@@ -11,9 +12,11 @@ using ParcialUnoP_IV.Data;
 namespace ParcialUnoP_IV.Migrations
 {
     [DbContext(typeof(ParcialUnoP_IVContext))]
-    partial class ParcialUnoP_IVContextModelSnapshot : ModelSnapshot
+    [Migration("20240517115825_AddUserTable")]
+    partial class AddUserTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

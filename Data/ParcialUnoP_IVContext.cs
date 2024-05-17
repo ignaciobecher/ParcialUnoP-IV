@@ -17,5 +17,14 @@ namespace ParcialUnoP_IV.Data
         public DbSet<ParcialUnoP_IV.Models.Clientes> Clientes { get; set; } = default!;
         public DbSet<ParcialUnoP_IV.Models.Productos> Productos { get; set; } = default!;
         public DbSet<ParcialUnoP_IV.Models.Ventas> Ventas { get; set; } = default!;
+        
+        public DbSet<ApplicationUser> Users { get; set; }
+    }
+
+    public class ApplicationUser
+    {
+        public int Id { get; set; }
+        public string Username { get; set; }
+        public string PasswordHash { get; set; }
     }
 }
