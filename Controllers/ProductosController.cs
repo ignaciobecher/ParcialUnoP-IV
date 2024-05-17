@@ -65,6 +65,21 @@ namespace ParcialUnoP_IV.Controllers
             return View(productos);
         }
 
+        // GET: Productos/Search
+        public async Task<IActionResult> Search(string productName)
+        {
+            if (string.IsNullOrEmpty(productName))
+            {
+                return View(new List<Productos>());
+            }
+
+            var productos = await _context.Productos
+                .Where(p => p.name.Contains(productName))
+                .ToListAsync();
+
+            return View(productos);
+        }
+
         // GET: Productos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ParcialUnoP_IV.Models.Productos>
+
+    @{
+        ViewData["Title"] = "Search";
+    }
+
+    <h1>Buscar producto</h1>
+
+    <form asp-action="Search" method="get">
+        <div class="form-group">
+            <label for="productName">Nombre del producto:</label>
+            <input type="text" placeholder="Producto..." name="productName" class="form-control" id="productName" />
+        </div>
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </form>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.name</td>
+                    <td>@item.description</td>
+                    <td>@item.price</td>
+                    <td>@item.quantity</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+<a asp-action="Index">Volver a productos</a>
+
