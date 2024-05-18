@@ -90,6 +90,8 @@ namespace ParcialUnoP_IV.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+
+
         public IActionResult AccessDenied()
         {
             return View();

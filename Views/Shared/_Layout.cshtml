@@ -31,6 +31,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Clientes" asp-action="Index">Clientes</a>
                         </li>
+                       
                     </ul>
                 </div>
             </div>
@@ -41,6 +42,12 @@
             @RenderBody()
         </main>
     </div>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <form asp-controller="Auth" asp-action="Logout" method="post" id="logoutForm">
+            <button type="submit" class="btn btn-link">Cerrar sesión</button>
+        </form>
+    }
 
     <footer class="border-top footer text-muted">
         <div class="container">

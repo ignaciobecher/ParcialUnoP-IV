@@ -1,14 +1,13 @@
 ﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 using ParcialUnoP_IV.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configurar el contexto de la base de datos
 builder.Services.AddDbContext<ParcialUnoP_IVContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ParcialUnoP_IVContext")));
 
-// Configurar servicios de autenticación basados en cookies
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
@@ -18,12 +17,18 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
     });
 
-// Agregar servicios de controladores con vistas
 builder.Services.AddControllersWithViews();
+
+//Compresion
+builder.Services.AddResponseCompression(options =>
+{
+    options.EnableForHttps = true;
+    options.Providers.Add<GzipCompressionProvider>();
+});
+builder.Services.AddApplicationInsightsTelemetry();
 
 var app = builder.Build();
 
-// Configurar el pipeline de solicitudes HTTP
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -35,11 +40,9 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-// Habilitar autenticación y autorización
 app.UseAuthentication();
 app.UseAuthorization();
 
-// Redireccionar a /Auth/Login al iniciar la aplicación
 app.Use(async (context, next) =>
 {
     if (!context.User.Identity.IsAuthenticated && context.Request.Path != "/Auth/Login")
@@ -51,14 +54,13 @@ app.Use(async (context, next) =>
     await next();
 });
 
-// Configurar el enrutamiento de las rutas
 app.MapControllerRoute(
     name: "auth",
-    pattern: "Auth/{action}/{id?}",  // Rutas relacionadas con la autenticación
+    pattern: "Auth/{action}/{id?}",  
     defaults: new { controller = "Auth" });
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}"); // Ruta predeterminada
+    pattern: "{controller=Home}/{action=Index}/{id?}"); 
 
 app.Run();
