@@ -44,7 +44,7 @@ namespace ParcialUnoP_IV.Controllers
                     var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                     var authProperties = new AuthenticationProperties
                     {
-                        // Configuración adicional de las propiedades de autenticación
+            
                     };
 
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
@@ -72,7 +72,7 @@ namespace ParcialUnoP_IV.Controllers
                 var user = new ApplicationUser
                 {
                     Username = model.Username,
-                    PasswordHash = model.Password // En una aplicación real, asegúrate de hashear las contraseñas
+                    PasswordHash = model.Password 
                 };
 
                 _context.Users.Add(user);

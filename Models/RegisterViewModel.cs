@@ -16,7 +16,7 @@ namespace ParcialUnoP_IV.Models
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Confirm Password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessage = "Contraseña incorrecta")]
         public string ConfirmPassword { get; set; }
     }
 }
